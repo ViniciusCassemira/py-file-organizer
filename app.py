@@ -34,6 +34,12 @@ if(not check_folder(Path(folder_destination))):
 
 # Iterate over files in the origin folder
 for file in Path(folder_origin).iterdir():
+
+    # Verify if it's a folder
+    if file.is_dir():
+        log_message(f"Skipping folder: {file.name}")
+        continue
+
     # Get file suffix and create folder path
     suffix_format = file.suffix.replace(".", "")
 
@@ -48,4 +54,4 @@ for file in Path(folder_origin).iterdir():
     file.rename(suffix_path / file.name)
 
     # Log the file move
-    log_message(f"The file {file.name} has been saved in the folder: {suffix_path}")
+    log_message(f"The file {file.name} has been saved in: {suffix_path}")
