@@ -37,10 +37,21 @@ Continuando com o nosso exemplo, vamos imaginar que o nosso `Folder destination`
     php.txt
 ```
 
+Após a execução do script, você receberá uma mensagem parecida como essa em seu terminal:
+```
+__________________________________
+      Organization completed
+    File count by extension:
+__________________________________
+txt - 2
+png - 1
+```
+
+*_Atualmente nenhuma biblioteca externa como  o `pandas` foi utilizada para a estilização desses resultados, visando a simplicidade e fácil utilização do script. Em breve isso será adicionado._
+
 **Observações importantes:**
 1) Os arquivos são movidos para esse novo caminho, **não é realizada** nenhuma cópia deles durante esse processo, sendo de fato transferidos.
-2) Atualmente, essa organização não é recursiva. Caso o seu `Folder origin` possua um subdiretório, esse será movido para o seu `Folder destination`, esse bug logo será corrigido.
-3) Confira o arquivo `logs.txt` após rodar o script. Ele armazena informações como arquivos movidos e possíveis erros.
+2) Confira o arquivo `logs.txt` após rodar o script. Ele armazena informações como arquivos movidos e possíveis erros.
 
 ## Referências utilizadas
 
