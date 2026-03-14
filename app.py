@@ -1,6 +1,8 @@
 from datetime import datetime
 from pathlib import Path
 
+dictionary_number_of_files = {}
+
 # Filter the date and current time
 current_time = datetime.now().strftime('%d/%m/%Y - %X')
 
@@ -43,6 +45,12 @@ for file in Path(folder_origin).iterdir():
     # Get file suffix and create folder path
     suffix_format = file.suffix.replace(".", "")
 
+    # Adding an extension to the dictionary
+    if ( suffix_format not in dictionary_number_of_files):
+        dictionary_number_of_files[suffix_format] = 1
+    else:
+        dictionary_number_of_files[suffix_format] += 1
+
     # Create path with suffix
     suffix_path = Path(f"{folder_destination}/{suffix_format}")
     
@@ -55,3 +63,12 @@ for file in Path(folder_origin).iterdir():
 
     # Log the file move
     log_message(f"The file {file.name} has been saved in: {suffix_path}")
+
+# Show result in terminal
+print('__________________________________')
+print('     Organization completed'       )
+print('    File count by extension:'      )
+print('__________________________________')
+
+for extension_file in dictionary_number_of_files:
+    print(f"{extension_file} - {dictionary_number_of_files[extension_file]}")
